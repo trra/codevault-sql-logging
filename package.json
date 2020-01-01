@@ -1,0 +1,21 @@
+{
+  "name": "@codevault/sql-logging",
+  "version": "0.0.3",
+  "description": "SQL logging module",
+  "main": "main.sql",
+  "scripts": {
+    "test": "codevault test.sql",
+    "build": "codevault main.sql",
+    "doc": "codevault main.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trra/codevault-sql-logging.git"
+  },
+  "author": "Otrera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trra/codevault-sql-logging/issues"
+  },
+  "homepage": "https://github.com/trra/codevault-sql-logging#readme"
+}
