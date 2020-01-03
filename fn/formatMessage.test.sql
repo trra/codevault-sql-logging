@@ -1,11 +1,11 @@
 {%- meta tables = 'tables.json' -%}
-{%- meta config = 'config.json' -%}
+{%- meta config = 'module.context.json' -%}
 {%- meta core = 'core.json' -%}
 {%- set table = tables.records -%}
 {%- set schemaName = table.schemaName if table.schemaName else config.settings.schemaName -%}
 {%- set tableName = table.tableName -%}
 
-PRINT '--- TEST FUNCTION [log].[formatMessage] ---'
+PRINT '--- TEST FUNCTION [{{schemaName}}].[formatMessage] ---'
 DECLARE @test varchar(150) = ''
 DECLARE @expect varchar(max) = ''
 DECLARE @actual varchar(max) = ''

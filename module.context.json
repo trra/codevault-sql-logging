@@ -1,0 +1,17 @@
+{
+  "namespace": "logging",
+  "dbType": "SQL Azure",
+  "settings": {
+    "schemaName": "log",
+    "defaultLogLevel": "info",
+    "logLevels": [
+      "trace",
+      "debug",
+      "info",
+      "warn",
+      "error",
+      "fatal"
+    ],
+    "dropTables": true
+  }
+}

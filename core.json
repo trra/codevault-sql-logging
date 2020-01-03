@@ -101,5 +101,38 @@
       "isNullable": false,
       "ordinalPosition": 10500
     }
-  ]
+  ],
+  "dataTypes": {
+    "integers": [
+      "int",
+      "integer",
+      "bigint",
+      "smallint",
+      "tinyint"
+    ],
+    "numbers": [
+      "numeric",
+      "decimal"
+    ],
+    "strings": [
+      "varchar",
+      "nvarchar",
+      "char",
+      "nchar"
+    ],
+    "dates": [
+      "date"
+    ],
+    "times": [
+      "time"
+    ],
+    "datetimes": [
+      "datetime"
+    ],
+    "largeObjects": [
+      "varchar",
+      "nvarchar",
+      "varbinary"
+    ]
+  }
 }

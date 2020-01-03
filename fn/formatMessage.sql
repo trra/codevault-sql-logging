@@ -1,5 +1,5 @@
 {%- meta tables = 'tables.json' -%}
-{%- meta config = 'config.json' -%}
+{%- meta config = 'module.context.json' -%}
 {%- meta core = 'core.json' -%}
 {%- set internalColumns = core.internalColumns | pickBy(core.objectType.logging) -%}
 
@@ -9,7 +9,7 @@
 {%- set dataTypes = config.dataTypes -%}
 
 {%- extends "layout/_fn.sql" -%}
-{%- block body -%}(
+{%- block body %} (
   @message nvarchar(max) 
 ) RETURNS nvarchar(max) AS 
 BEGIN

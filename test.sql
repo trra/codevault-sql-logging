@@ -1,10 +1,11 @@
 {%- meta package = 'package.json' -%}
-{%- meta settings = 'config.json', objectName = 'settings' -%}
+{%- meta settings = 'module.context.json', objectName = 'settings' -%}
 {%- meta core = 'core.json' -%}
 {%- meta table = 'tables.json', objectName = 'records'  -%}
 PRINT '--- codeVault package [{{package.name}}:{{package.version}}]'
+SET NOCOUNT ON;
 
-{%- set _inColumns = core.internalColumns | pickBy(core.objectType.logging) | keyBy('code') -%}
+{% set _inColumns = core.internalColumns | pickBy(core.objectType.logging) | keyBy('code') -%}
 {%- set schemaName = table.schemaName if table.schemaName else settings.schemaName -%}
 PRINT '--- TEST FUNCTIONS ---'
 {% include 'fn/formatMessage.test.sql' %}

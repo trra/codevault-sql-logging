@@ -55,9 +55,9 @@ CREATE PROCEDURE [{{schemaName}}].[{{procedureName}}]
   @message varchar(max) 
 AS 
 BEGIN
-  INSERT INTO [log].[records] (logLevel, [message], detail,
+  INSERT INTO [{{schemaName}}].[{{tableName}}] (logLevel, [message], detail,
     dwSessionNo, dwPackageName, dwObjectCode, dwCreateBy, dwCreateDate)
-  SELECT '{{procedureName}}', isNull(@message, JSON_VALUE(log.formatMessage(@message),'$.error.message')), log.formatMessage(@message),
+  SELECT '{{procedureName}}', isNull(@message, JSON_VALUE([{{schemaName}}].formatMessage(@message),'$.error.message')), [{{schemaName}}].formatMessage(@message),
     @sessionNo, @packageName, @objectCode, ORIGINAL_LOGIN(), getDate()
 END
 GO
