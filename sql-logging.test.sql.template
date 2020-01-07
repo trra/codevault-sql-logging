@@ -1,12 +1,14 @@
-{%- meta package = 'package.json' -%}
-{%- meta settings = 'module.context.json', objectName = 'settings' -%}
-{%- meta core = 'core.json' -%}
-{%- meta table = 'tables.json', objectName = 'records'  -%}
+{%- connect settings = "@codevault/sql-logging" -%}
+{%- fetch package = 'package.json' -%}
+{%- fetch core = 'core.json' -%}
+{%- fetch table = 'tables.json', objectName = 'records' -%}
+{%- set dataTypes = core.dataTypes -%}
+{%- set schemaName = table.schemaName if table.schemaName else settings.schemaName -%}
+{%- set internalColumns = core.internalColumns | pickBy(core.objectType.logging) | keyBy('code') -%}
+
 PRINT '--- codeVault package [{{package.name}}:{{package.version}}]'
 SET NOCOUNT ON;
 
-{% set _inColumns = core.internalColumns | pickBy(core.objectType.logging) | keyBy('code') -%}
-{%- set schemaName = table.schemaName if table.schemaName else settings.schemaName -%}
 PRINT '--- TEST FUNCTIONS ---'
 {% include 'fn/formatMessage.test.sql' %}
 
@@ -21,8 +23,8 @@ SET @expect = '{{logLevel}} message'
 EXEC [{{schemaName}}].[{{logLevel}}] 'testSession', 'testPackage', 'testObject', @expect
 SELECT TOP 1 @actual = JSON_VALUE(detail, '$.message') 
 FROM [{{schemaName}}].[{{table.tableName}}] 
-WHERE {{ _inColumns.sessionNo.name }} = 'testSession'
-ORDER BY {{ _inColumns.createDate.name}} DESC
+WHERE {{ internalColumns.sessionNo.name }} = 'testSession'
+ORDER BY {{ internalColumns.createDate.name}} DESC
 
 PRINT '--- ' + CASE 
   WHEN @expect = @actual THEN 'PASSED' 

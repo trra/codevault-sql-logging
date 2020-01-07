@@ -1,21 +1,21 @@
 {
   "name": "@codevault/sql-logging",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "SQL logging module",
-  "main": "main.sql",
-  "scripts": {
-    "test": "codevault test.sql",
-    "build": "codevault main.sql",
-    "doc": "codevault main.md"
-  },
+  "main": "sql-logging.sql.template",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/trra/codevault-sql-logging.git"
   },
+  "scripts": {
+    "test": "codevault test -p @codevault/sql-logging -o out",
+    "doc": "codevault doc -p @codevault/sql-logging -o out",
+    "build": "codevault install -p @codevault/sql-logging -o out"
+  },
   "author": "Otrera",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trra/codevault-sql-logging/issues"
+    "url": "https://github.com/tsart/codevault-sql-logging/issues"
   },
-  "homepage": "https://github.com/trra/codevault-sql-logging#readme"
+  "homepage": "https://github.com/tsart/codevault-sql-logging#readme"
 }

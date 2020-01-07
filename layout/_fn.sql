@@ -16,6 +16,8 @@ IF OBJECT_ID('[{{schemaName}}].[{{functionName}}]', 'FN') IS NOT NULL DROP FUNCT
 GO
 CREATE FUNCTION [{{schemaName}}].[{{functionName}}] 
 {%- endblock -%}
+
 {% block body%}{% endblock %}
+
 {%- block footer -%}
 {%- endblock -%}

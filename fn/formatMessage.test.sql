@@ -1,8 +1,5 @@
-{%- meta tables = 'tables.json' -%}
-{%- meta config = 'module.context.json' -%}
-{%- meta core = 'core.json' -%}
+{%- set function = {name: 'formatMessage'} -%}
 {%- set table = tables.records -%}
-{%- set schemaName = table.schemaName if table.schemaName else config.settings.schemaName -%}
 {%- set tableName = table.tableName -%}
 
 PRINT '--- TEST FUNCTION [{{schemaName}}].[formatMessage] ---'

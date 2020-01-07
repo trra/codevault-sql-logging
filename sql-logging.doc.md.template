@@ -1,0 +1,25 @@
+{%- connect settings = "@codevault/sql-logging" -%}
+# TODO: Documentation
+
+Schema Name: {{ settings.schemaName }}
+
+### Installation
+
+To install package run command `npm install @codevault/sql-logging`
+
+Then to generate the installation SQL script run `codevault install -p @codevault/sql-logging`
+
+### Generate test script
+
+The following command generates test SQL script `codevault test -p @codevault/sql-logging`
+
+### Usage Sample
+
+{% raw %}
+```sql
+{% connect log = "@codevault/sql-logging", extended = true -%}
+
+Exec [{{log.schemaName}}].info 'codevault-20191231', '{{log.package.name}}', 'main', 'Code generation succeeded'
+Exec [{{log.schemaName}}].info 'codevault-20191231', '{{log.package.name}}', 'settings', '{{log | dump | safe}}'
+```
+{% endraw %}

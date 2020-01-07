@@ -1,12 +1,5 @@
-{%- meta tables = 'tables.json' -%}
-{%- meta config = 'module.context.json' -%}
-{%- meta core = 'core.json' -%}
-{%- set internalColumns = core.internalColumns | pickBy(core.objectType.logging) -%}
-
 {%- set function = {name: 'formatMessage'} -%}
 {%- set table = tables.records -%}
-{%- set settings = config.settings -%}
-{%- set dataTypes = config.dataTypes -%}
 
 {%- extends "layout/_fn.sql" -%}
 {%- block body %} (
@@ -27,15 +20,6 @@ BEGIN
   IF @error != N'{}' SET @result = JSON_MODIFY(@result, '$.error', JSON_QUERY(@error))
   RETURN @result
 END
-GO
-{% endblock %}
-
-{%- block test %}
-PRINT '--- TEST FUNCTION [{{schemaName}}].[{{function.name}}] ---'
-PRINT '--- [message]: ' + CASE 
-  WHEN 'test message' =
-  JSON_VALUE([{{schemaName}}].[{{function.name}}]('test message'), '$.message')
-  THEN 'PASSED' ELSE 'FAILED' END
 GO
 {% endblock %}
 

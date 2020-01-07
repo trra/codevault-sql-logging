@@ -1,7 +1,7 @@
 {
   "namespace": "logging",
   "dbType": "SQL Azure",
-  "settings": {
+  "logging": {
     "schemaName": "log",
     "defaultLogLevel": "info",
     "logLevels": [
@@ -13,5 +13,9 @@
       "fatal"
     ],
     "dropTables": true
-  }
+  },
+  "files": [
+    "core.json",
+    "tables.json"
+  ]
 }
